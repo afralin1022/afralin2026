@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Afra Lin｜網頁設計與 SEO 作品集</title>
+<meta name="description" content="Afra Lin 個人作品集：六年以上網頁設計、四年以上 SEO 實務經驗。擅長 WordPress 建置、HTML/CSS 前端介面與技術 SEO，用 Google Search Console 數據驗證成效，把策略轉成可上線的網站。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="Afra Lin｜網頁設計與 SEO 作品集">
+<meta property="og:description" content="六年以上網頁設計、四年以上 SEO 實務經驗。從網站設計、WordPress 建置到技術 SEO，把策略轉成可上線的網站，再用數據驗證成果。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" type="image/png" href="assets/favicon-afra.png">
+<link rel="preload" as="image" href="assets/casino-9top-pc-top.webp">
+<style>
+/*
+  Design read: 設計師兼前端的個人作品集，給招募主管快速瀏覽。
+  中性冷灰底 + 單一鈷藍強調色，讓色彩濃烈的作品本身成為主角。
+  圓角規則：卡片與畫框 14px，按鈕與標籤為全圓角膠囊。
+*/
+:root{
+  /* 黑白銀：亮色為白底銀灰，暗色為黑底銀白；強調色是石墨/銀，不再用藍 */
+  --bg:#f4f4f5;
+  --surface:#fdfdfd;
+  --surface-2:#e7e8ea;
+  --ink:#0d0d0f;
+  --ink-2:#4a4c52;
+  --ink-3:#6c6f76;
+  --line:#d6d8dc;
+  --accent:#1c1d20;
+  --accent-ink:#f4f4f5;
+  --accent-soft:#e6e7ea;
+  /* 金屬：主按鈕、選中狀態、重點邊框與主標強調字 */
+  --metal-fill:linear-gradient(180deg,#4a4c52 0%,#1d1e21 46%,#0e0f11 54%,#2c2e33 100%);
+  --metal-fg:#f1f2f4;
+  --metal-rim:rgb(0 0 0 / .55);
+  --metal-text:linear-gradient(180deg,#6b6e75 0%,#141518 48%,#2a2c31 62%,#8d9097 100%);
+  --metal-line:linear-gradient(180deg,rgb(255 255 255 / .95),rgb(0 0 0 / .10) 38%,rgb(0 0 0 / .14) 72%,rgb(0 0 0 / .07));
+  --metal-line-hi:linear-gradient(180deg,rgb(255 255 255 / 1),rgb(0 0 0 / .20) 38%,rgb(0 0 0 / .26) 72%,rgb(0 0 0 / .14));
+  /* 表面：邊框依背景調整濃淡，重要容器加內緣高光 */
+  --line-soft:color-mix(in srgb,var(--line) 62%,transparent);
+  --line-strong:color-mix(in srgb,var(--ink) 22%,var(--line));
+  --edge-hi:inset 0 1px 0 rgb(255 255 255 / .75);
+  --tag-bg:color-mix(in srgb,var(--surface) 55%,transparent);
+  /* 陰影三層：一般內容 / 重點作品 / 浮動元件。皆有向下位移，色調貼近冷灰背景 */
+  --shadow-1:0 1px 2px rgb(16 17 20 / .05),0 2px 6px -2px rgb(16 17 20 / .06);
+  --shadow-2:0 1px 2px rgb(16 17 20 / .06),0 10px 24px -12px rgb(16 17 20 / .16),0 30px 60px -30px rgb(16 17 20 / .18);
+  --shadow-3:0 2px 4px rgb(10 10 12 / .10),0 16px 32px -12px rgb(10 10 12 / .30),0 40px 72px -36px rgb(10 10 12 / .28);
+  --btn-shadow:0 1px 2px rgb(0 0 0 / .22),0 6px 14px -6px rgb(0 0 0 / .35);
+  --glow:rgb(160 166 178 / .22);
+  /* 圓角：外層容器 > 卡片與畫框 > 內層區塊 > 小元件，膠囊另計 */
+  --r-xs:6px; --r-sm:10px; --radius:14px; --r-lg:20px; --r-xl:24px;
+  --dur-fast:.18s; --dur:.35s;
+  --maxw:1320px;
+  --font:"Geist","Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  /* 字級：每一階都有明確用途，避免 1px 級距 */
+  --fs-2xs:.75rem;                                  /* 12 等寬標籤 */
+  --fs-xs:.8125rem;                                 /* 13 註解、說明、圖表標註 */
+  --fs-sm:.875rem;                                  /* 14 次要 UI、提示 */
+  --fs-ui:.9375rem;                                 /* 15 導覽、分頁、卡片內文 */
+  --fs-base:1rem;                                   /* 16 內文 */
+  --fs-lede:clamp(1rem,.94rem + .3vw,1.125rem);     /* 16-18 區塊引言 */
+  --fs-card:clamp(1.0625rem,1rem + .3vw,1.25rem);   /* 17-20 卡片與作品標題 */
+  --fs-h3:clamp(1.375rem,1.15rem + .9vw,1.875rem);  /* 22-30 子區塊標題 */
+  --fs-h2:clamp(1.75rem,1.3rem + 1.9vw,2.75rem);    /* 28-44 區塊標題 */
+  --fs-h1:clamp(2.25rem,.6rem + 4vw,4rem);          /* 36-64 主標，雙欄時依欄寬縮放 */
+  --fs-stat:clamp(2rem,1.6rem + 1.6vw,3rem);        /* 32-48 數字 */
+  --fs-kpi:clamp(1.75rem,1.45rem + 1.1vw,2.5rem);   /* 28-40 卡片內的關鍵數字 */
+  --lh-body:1.75; --lh-snug:1.65; --lh-head:1.22; --lh-display:1.12;
+  /* 間距：4 的倍數，再加三個依層級變化的流體間距 */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem; --sp-6:2rem; --sp-7:3rem; --sp-8:4rem;
+  --gutter:clamp(1.25rem,4vw,3rem);                 /* 左右留白 20-48 */
+  --space-head:clamp(2rem,1.6rem + 1.6vw,3rem);     /* 標題區塊到內容 32-48 */
+  --space-sub:clamp(3rem,2.2rem + 3vw,5rem);        /* 區塊內的子段落 48-80 */
+  --space-section:clamp(4rem,2.6rem + 6vw,8rem);    /* 主要區塊之間 64-128 */
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#09090a;--surface:#111113;--surface-2:#19191c;--ink:#ededef;--ink-2:#a7a9ae;--ink-3:#7e8087;
+    --line:#26272b;--accent:#d3d5da;--accent-ink:#0a0a0b;--accent-soft:rgb(255 255 255 / .08);--metal-fill:linear-gradient(180deg,#fbfbfc 0%,#d6d8dc 44%,#a9adb4 54%,#e4e6e9 100%);--metal-fg:#0b0b0c;--metal-rim:rgb(255 255 255 / .55);--metal-text:linear-gradient(180deg,#ffffff 0%,#c9ccd2 46%,#8e929a 58%,#e9eaed 100%);--metal-line:linear-gradient(180deg,rgb(255 255 255 / .26),rgb(255 255 255 / .06) 36%,rgb(255 255 255 / .04) 70%,rgb(255 255 255 / .12));--metal-line-hi:linear-gradient(180deg,rgb(255 255 255 / .44),rgb(255 255 255 / .12) 36%,rgb(255 255 255 / .08) 70%,rgb(255 255 255 / .22));color-scheme:dark;--line-strong:color-mix(in srgb,var(--ink) 26%,var(--line));--edge-hi:inset 0 1px 0 rgb(255 255 255 / .06);--tag-bg:color-mix(in srgb,var(--surface) 70%,transparent);--shadow-1:0 1px 2px rgb(0 0 0 / .45);--shadow-2:0 1px 2px rgb(0 0 0 / .5),0 16px 36px -16px rgb(0 0 0 / .75);--shadow-3:0 2px 6px rgb(0 0 0 / .55),0 24px 48px -18px rgb(0 0 0 / .85);--btn-shadow:0 1px 2px rgb(0 0 0 / .5),0 6px 16px -8px rgb(0 0 0 / .7);--glow:rgb(255 255 255 / .07);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#09090a;--surface:#111113;--surface-2:#19191c;--ink:#ededef;--ink-2:#a7a9ae;--ink-3:#7e8087;
+  --line:#26272b;--accent:#d3d5da;--accent-ink:#0a0a0b;--accent-soft:rgb(255 255 255 / .08);--metal-fill:linear-gradient(180deg,#fbfbfc 0%,#d6d8dc 44%,#a9adb4 54%,#e4e6e9 100%);--metal-fg:#0b0b0c;--metal-rim:rgb(255 255 255 / .55);--metal-text:linear-gradient(180deg,#ffffff 0%,#c9ccd2 46%,#8e929a 58%,#e9eaed 100%);--metal-line:linear-gradient(180deg,rgb(255 255 255 / .26),rgb(255 255 255 / .06) 36%,rgb(255 255 255 / .04) 70%,rgb(255 255 255 / .12));--metal-line-hi:linear-gradient(180deg,rgb(255 255 255 / .44),rgb(255 255 255 / .12) 36%,rgb(255 255 255 / .08) 70%,rgb(255 255 255 / .22));color-scheme:dark;--line-strong:color-mix(in srgb,var(--ink) 26%,var(--line));--edge-hi:inset 0 1px 0 rgb(255 255 255 / .06);--tag-bg:color-mix(in srgb,var(--surface) 70%,transparent);--shadow-1:0 1px 2px rgb(0 0 0 / .45);--shadow-2:0 1px 2px rgb(0 0 0 / .5),0 16px 36px -16px rgb(0 0 0 / .75);--shadow-3:0 2px 6px rgb(0 0 0 / .55),0 24px 48px -18px rgb(0 0 0 / .85);--btn-shadow:0 1px 2px rgb(0 0 0 / .5),0 6px 16px -8px rgb(0 0 0 / .7);--glow:rgb(255 255 255 / .07);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:var(--fs-base);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--ink)}
+html{scrollbar-color:color-mix(in srgb,var(--ink-3) 45%,transparent) transparent;accent-color:var(--accent)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+section{padding:0 0 var(--space-section)}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:var(--lh-head)}
+h2{font-size:var(--fs-h2);max-width:18em;text-wrap:balance}
+p{text-wrap:pretty}
+.nb{display:inline-block;max-width:100%}  /* 詞組盡量同行；字放大到放不下時仍可換行 */
+.lede{color:var(--ink-2);max-width:36em;margin:var(--sp-4) 0 0;font-size:var(--fs-lede);line-height:var(--lh-body)}
+.mono{font-family:var(--mono)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav .wrap{min-height:64px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-2) var(--sp-5)}
+.brand{font-weight:700;text-decoration:none;font-size:var(--fs-card);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+/* 個人 Logo：單色圖檔當遮罩，顏色跟隨文字色，深淺模式都清楚 */
+.brand-logo{display:block;height:34px;aspect-ratio:1275/240;background:currentColor;-webkit-mask:url(assets/logo-afra.webp) center/contain no-repeat;mask:url(assets/logo-afra.webp) center/contain no-repeat;transition:opacity var(--dur-fast) var(--ease)}
+.brand:hover .brand-logo{opacity:.75}
+@media (max-width:420px){.brand-logo{height:28px}}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--ink-2);padding:var(--sp-2) var(--sp-3);border-radius:999px;font-size:var(--fs-ui);white-space:nowrap;transition:background .25s var(--ease),color .25s var(--ease)}
+.nav ul a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--edge-hi),var(--shadow-1);display:grid;place-items:center;cursor:pointer;font-size:18px;transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.icon-btn:hover{border-color:var(--line-strong)}
+.icon-btn:active{transform:scale(.96)}
+@media (max-width:860px){.nav ul{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 var(--sp-5);border-radius:999px;font-weight:600;font-size:var(--fs-base);text-decoration:none;white-space:nowrap;border:1px solid transparent;transition:transform var(--dur) var(--ease),background-color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),box-shadow var(--dur) var(--ease)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-primary{background:var(--metal-fill);color:var(--metal-fg);border-color:var(--metal-rim);box-shadow:inset 0 1px 0 rgb(255 255 255 / .35),inset 0 -1px 0 rgb(0 0 0 / .18),var(--btn-shadow)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:var(--line);background:var(--surface);color:var(--ink);box-shadow:var(--edge-hi),var(--shadow-1)}
+.btn-ghost:hover{border-color:var(--line-strong)}
+@media (hover:hover){.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(1px) scale(.98)}}
+.btn i{font-size:18px}
+.btn-sm{height:40px;padding:0 var(--sp-4);font-size:var(--fs-ui)}
+
+/* hero */
+.hero{overflow-x:clip;padding:var(--sp-7) 0 var(--sp-8);min-height:calc(100dvh - 64px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:center;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-xs);font-weight:500;color:var(--accent);background:var(--accent-soft);padding:var(--sp-1) var(--sp-3);border-radius:999px}
+.hero h1{font-size:var(--fs-h1);margin-top:var(--sp-5);letter-spacing:-.035em;line-height:var(--lh-display)}
+.hero h1 em{font-style:normal;color:var(--ink);background:var(--metal-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--ink-2);font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);max-width:22em;margin:var(--sp-5) 0 0}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin-top:var(--sp-6)}
+.stage{position:relative;aspect-ratio:1.18/1;isolation:isolate}
+.stage::before{content:"";position:absolute;inset:-10% -14% -18% -12%;z-index:-1;pointer-events:none;background:radial-gradient(60% 46% at 50% 60%,var(--glow),transparent 80%)}  /* 漸層在框內完全淡出，避免切邊 */
+.browser{position:absolute;left:0;top:4%;width:88%;border-radius:var(--radius);border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--metal-line) border-box;box-shadow:var(--edge-hi),var(--shadow-2);overflow:hidden}
+.browser-bar{height:30px;display:flex;align-items:center;gap:6px;padding:0 12px;background:linear-gradient(var(--surface),color-mix(in srgb,var(--surface-2) 45%,var(--surface)));border-bottom:1px solid var(--line-soft)}
+.browser-bar span{width:9px;height:9px;border-radius:50%;background:color-mix(in srgb,var(--line) 85%,var(--ink-3));box-shadow:inset 0 1px 1px rgb(0 0 0 / .08)}
+.phone{position:absolute;right:0;bottom:0;width:30%;aspect-ratio:390/844;border-radius:28px;border:6px solid #15161a;background:#15161a;overflow:hidden;box-shadow:0 0 0 1px rgb(255 255 255 / .06),var(--shadow-3)}
+.phone img,.browser img{width:100%}
+.hero .phone{width:29%}
+@media (max-width:1000px){
+  .hero{min-height:auto}
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{max-width:620px}
+}
+
+/* reveal + hero entry */
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards;animation-delay:calc(var(--i,0) * 90ms + 80ms)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+  .reveal.in{opacity:1;transform:none}
+}
+
+/* stats */
+.stats{padding:0}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.stat{padding:var(--sp-6) var(--sp-5) var(--sp-2) 0}
+.stat + .stat{padding-left:var(--sp-5);border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--mono);font-weight:500;font-size:var(--fs-stat);letter-spacing:-.04em;line-height:1}
+.stat span{display:block;color:var(--ink-2);font-size:var(--fs-ui);line-height:var(--lh-snug);margin-top:var(--sp-3)}
+@media (max-width:760px){
+  .stats .wrap{grid-template-columns:1fr}
+  .stat + .stat{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .stat{padding:var(--sp-5) 0 var(--sp-4)}
+}
+
+/* platform showcase */
+.tabs{display:flex;gap:var(--sp-2);margin:var(--space-head) 0 var(--sp-5);overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;height:42px;padding:0 var(--sp-4);cursor:pointer;font-size:var(--fs-ui);color:var(--ink-2);box-shadow:var(--edge-hi);transition:color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);white-space:nowrap}
+.tab:hover{color:var(--ink);border-color:var(--line-strong)}
+.tab:active{transform:scale(.98)}
+.tab[aria-selected="true"]{background:var(--metal-fill);color:var(--metal-fg);border-color:var(--metal-rim);box-shadow:inset 0 1px 0 rgb(255 255 255 / .3),var(--shadow-1)}
+.showcase{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:clamp(16px,3vw,40px);align-items:start}
+.scroller{position:relative;container-type:size;overflow:hidden;cursor:zoom-in;background:var(--surface-2)}
+.scroller img{width:100%;transform:translateY(0);transition:transform var(--dur,6s) cubic-bezier(.45,0,.25,1)}
+.scroller:hover img,.scroller:focus-visible img{transform:translateY(calc(-100% + 100cqh))}
+.pc-frame{--mline:var(--metal-line);border-radius:var(--radius);border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--mline) border-box;overflow:hidden;box-shadow:var(--edge-hi),var(--shadow-2)}
+.pc-frame:has(.scroller:hover),.pc-frame:has(.scroller:focus-visible){--mline:var(--metal-line-hi)}
+.scroller:focus-visible{outline-offset:-3px}
+.pc-frame .scroller{aspect-ratio:16/9.6}
+.h5-frame{border-radius:30px;border:7px solid #15161a;overflow:hidden;background:#15161a;box-shadow:0 0 0 1px rgb(255 255 255 / .06),var(--shadow-3)}
+.h5-frame .scroller{aspect-ratio:390/780}
+.show-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-5);align-items:baseline}
+.show-meta h3{font-size:var(--fs-card)}
+.show-meta p{margin:var(--sp-2) 0 0;color:var(--ink-2);max-width:36em;line-height:var(--lh-snug)}
+.hint{display:flex;align-items:center;gap:var(--sp-2);color:var(--ink-3);font-size:var(--fs-sm)}
+.panel{display:none}
+.panel.active{display:block}
+@media (prefers-reduced-motion:no-preference){.panel.active{animation:fade .6s var(--ease)}@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+@media (max-width:760px){
+  .showcase{grid-template-columns:1fr}
+  .h5-frame{width:62%;max-width:260px;margin:0 auto}
+}
+
+/* member center */
+.mc-wrap{margin-top:var(--space-sub);padding-top:var(--space-head);border-top:1px solid var(--line)}
+.mc-wrap h3.mc-title{font-size:var(--fs-h3);max-width:20em;text-wrap:balance}
+.mc{display:grid;grid-template-columns:200px minmax(0,1fr) 220px;gap:clamp(var(--sp-4),2.5vw,var(--sp-6));align-items:start;margin-top:var(--space-head)}
+.mc > *{min-width:0}
+.mc-nav{display:grid;gap:12px;position:sticky;top:88px}
+.mc .pc-frame .scroller{aspect-ratio:16/12.4}
+.mc .h5-frame .scroller{aspect-ratio:390/1000}
+.mc-group p{margin:0 0 var(--sp-1);font-size:var(--fs-2xs);color:var(--ink-3);font-family:var(--mono)}
+.mc-group div{display:grid;gap:2px}
+.mc-item{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:5px var(--sp-3);border-radius:8px;font-size:var(--fs-sm);line-height:1.5;color:var(--ink-2);transition:background .2s var(--ease),color .2s var(--ease)}
+.mc-item:hover{background:color-mix(in srgb,var(--surface-2) 75%,transparent);color:var(--ink)}
+.mc-item:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.mc-item[aria-selected="true"]{background:var(--metal-fill);color:var(--metal-fg);box-shadow:inset 0 1px 0 rgb(255 255 255 / .3),var(--shadow-1)}
+.mc-note{border:1px dashed var(--line-strong);border-radius:var(--radius);background:color-mix(in srgb,var(--surface) 60%,transparent);aspect-ratio:16/13.1;display:grid;place-items:center;text-align:center;padding:24px;color:var(--ink-2)}
+.mc-note i{font-size:28px;color:var(--accent)}
+.mc-note p{margin:10px 0 0;max-width:30ch}
+.mc-meta{grid-column:2/4;display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-3) var(--sp-5);align-items:baseline}
+.mc-meta h4{margin:0;font-size:var(--fs-card);line-height:var(--lh-head)}
+.mc-meta p{margin:var(--sp-2) 0 0;color:var(--ink-2);max-width:36em;line-height:var(--lh-snug)}
+.mc-extra{display:inline-block;margin-left:var(--sp-2);font-size:var(--fs-2xs);font-weight:500;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px;vertical-align:middle}
+@media (max-width:1000px){
+  .mc{grid-template-columns:minmax(0,1fr) 200px}
+  .mc-nav{grid-column:1/-1;position:static;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .mc-nav::-webkit-scrollbar{display:none}
+  .mc-group{display:contents}
+  .mc-group p{display:none}
+  .mc-group div{display:contents}
+  .mc-item{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:var(--sp-2) var(--sp-4);font-size:var(--fs-ui);white-space:nowrap}
+  .mc .pc-frame .scroller{aspect-ratio:16/12}
+  .mc .h5-frame .scroller{aspect-ratio:390/780}
+  .mc-note{aspect-ratio:16/11.2}
+  .mc-meta{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .mc{grid-template-columns:1fr}
+  .mc .h5-frame{width:62%;max-width:240px;margin:0 auto}
+}
+
+/* websites bento */
+.sites{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--sp-7) var(--sp-5);margin-top:var(--space-head)}
+.site{grid-column:span 3}
+.site.w4{grid-column:span 4}.site.w2{grid-column:span 2}
+.site figure{margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-soft);background:var(--surface);box-shadow:var(--shadow-1);cursor:zoom-in;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.site figure:hover{border-color:var(--line-strong);box-shadow:var(--shadow-2)}
+.site figure img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .9s var(--ease)}
+.site.w2 figure{aspect-ratio:4/5;display:grid;place-items:center;background:var(--surface-2);overflow:hidden}
+.site.w2 figure img{width:52%;aspect-ratio:390/844;object-fit:cover;border-radius:22px;border:6px solid #15161a;box-shadow:0 0 0 1px rgb(255 255 255 / .06),var(--shadow-3)}
+.site.w2.tint-a figure{background:color-mix(in srgb,#d9a99b 12%,var(--surface-2))}.site.w2.tint-b figure{background:color-mix(in srgb,#6fae88 12%,var(--surface-2))}
+.site:hover figure img{transform:scale(1.035)}
+.site.w2:hover figure img{transform:translateY(-6px)}
+.site-info{display:flex;justify-content:space-between;gap:var(--sp-4);margin-top:var(--sp-4);align-items:flex-start}
+.site-info h3{font-size:var(--fs-card)}
+.site-info p{margin:var(--sp-2) 0 0;color:var(--ink-2);font-size:var(--fs-ui);line-height:var(--lh-snug);max-width:34em}
+.tags{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-top:var(--sp-3)}
+.tags span{font-family:var(--mono);font-size:var(--fs-2xs);line-height:1.5;color:var(--ink-2);background:var(--tag-bg);border:1px solid var(--line-soft);border-radius:999px;padding:var(--sp-1) var(--sp-3)}
+.open-link{flex:none;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--edge-hi),var(--shadow-1);display:grid;place-items:center;text-decoration:none;font-size:17px;transition:background-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),box-shadow var(--dur) var(--ease)}
+.open-link:hover{background:var(--metal-fill);color:var(--metal-fg);border-color:var(--metal-rim);box-shadow:var(--btn-shadow)}
+.open-link:active{transform:scale(.96)}
+@media (max-width:860px){
+  .sites{grid-template-columns:1fr}
+  .site,.site.w4,.site.w2{grid-column:auto}
+  .site.w2 figure{aspect-ratio:auto;padding:32px 0}
+  .site.w2 figure img{width:min(52%,240px)}
+}
+
+/* wordpress sites */
+.wp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-7) var(--sp-5);margin-top:var(--space-head)}
+.wp-grid > *{min-width:0}
+.wp-stage{position:relative;padding:clamp(16px,2.4vw,28px) clamp(16px,2.4vw,28px) 0;border-radius:var(--radius);background:var(--tint,var(--surface-2));overflow:hidden;aspect-ratio:16/11.5;box-shadow:inset 0 0 0 1px rgb(0 0 0 / .04),var(--edge-hi)}
+.wp-stage .pc-frame{width:84%;border-radius:var(--r-sm)}
+.wp-stage .pc-frame .browser-bar{height:22px}
+.wp-stage .pc-frame .browser-bar span{width:7px;height:7px}
+.wp-stage .pc-frame .scroller{aspect-ratio:16/11.2}
+.wp-stage .h5-frame{position:absolute;right:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);width:25%;border-width:5px;border-radius:22px}
+.wp-stage .h5-frame .scroller{aspect-ratio:390/780}
+.wp-info{display:flex;justify-content:space-between;gap:var(--sp-4);margin-top:var(--sp-4);align-items:flex-start}
+.wp-info h3{font-size:var(--fs-card)}
+.wp-info .kind{display:block;font-size:var(--fs-xs);color:var(--ink-3);margin-bottom:var(--sp-1)}
+.wp-info p{margin:var(--sp-2) 0 0;color:var(--ink-2);font-size:var(--fs-ui);line-height:var(--lh-snug);max-width:34em}
+.wp-hint{color:var(--ink-3);font-size:var(--fs-sm);margin-top:var(--sp-6);display:flex;align-items:center;gap:var(--sp-2)}
+@media (max-width:860px){
+  .wp-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .wp-stage{aspect-ratio:16/13}
+  .wp-stage .h5-frame{width:30%;border-width:4px;border-radius:16px}
+}
+
+/* posters masonry */
+.posters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:var(--sp-4);margin-top:var(--space-head)}
+.poster{margin:0;aspect-ratio:9/16;border-radius:var(--radius);overflow:hidden;cursor:zoom-in;background:var(--surface-2);position:relative;box-shadow:var(--shadow-1)}
+.poster::after,.cell::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgb(255 255 255 / .07),inset 0 1px 0 rgb(255 255 255 / .12)}
+.poster.feature{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.poster img,.poster video{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.poster:hover img{transform:scale(1.04)}
+@media (max-width:760px){.posters{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}}
+
+/* identity grid */
+.idgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(170px,17vw,230px);gap:var(--sp-4);margin-top:var(--space-head)}
+.cell{border-radius:var(--radius);overflow:hidden;position:relative;display:grid;place-items:center;cursor:zoom-in;border:1px solid var(--line-soft);box-shadow:var(--shadow-1)}
+.cell img{max-width:78%;max-height:74%;object-fit:contain;transition:transform .7s var(--ease)}
+.cell:hover img{transform:scale(1.05)}
+.cell.cover img{max-width:none;max-height:none;width:100%;height:100%;object-fit:cover}
+.c-99w{grid-column:1/3;grid-row:1;background:#0d0d17}
+.c-99i{grid-column:3;grid-row:1;background:#06060b}
+.c-capyapp{grid-column:4;grid-row:1/3;background:#3a1b14}
+.c-9win{grid-column:1;grid-row:2;background:#070b1f}
+.c-xhe{grid-column:2/4;grid-row:2;background:#f7f7f7}
+.c-kh{grid-column:1;grid-row:3;background:#050505}
+.c-capy{grid-column:2;grid-row:3;background:#11243b}
+.c-zx{grid-column:3/5;grid-row:3;background:#fafafa}
+.c-zx1{grid-column:1/3;grid-row:4;background:#f0f0f0}
+.c-zx2{grid-column:3/5;grid-row:4;background:#f0f0f0}
+@media (max-width:760px){
+  .idgrid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:var(--sp-3)}
+  .idgrid .cell{grid-column:auto;grid-row:auto}
+  .c-99w,.c-xhe,.c-zx,.c-zx1,.c-zx2{grid-column:1/-1 !important}
+  .c-capyapp{grid-row:span 2 !important}
+}
+
+/* seo cases */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-5);margin-top:var(--space-head);align-items:start}
+.case-card{--mline:var(--metal-line);display:block;width:100%;text-align:left;padding:0;cursor:pointer;border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--mline) border-box;border-radius:var(--radius);overflow:hidden;box-shadow:var(--edge-hi),var(--shadow-1);transition:border-color var(--dur) var(--ease),transform .5s var(--ease),box-shadow var(--dur) var(--ease),opacity .9s var(--ease)}
+.case-card:hover{--mline:var(--metal-line-hi);box-shadow:var(--edge-hi),var(--shadow-2)}
+@media (hover:hover){.case-card:hover{transform:translateY(-2px)}}
+.case-card:active{transform:scale(.995)}
+.case-card[aria-expanded="true"]{--mline:var(--metal-line-hi);box-shadow:var(--edge-hi),inset 0 0 0 1px var(--line-strong),var(--shadow-2)}
+.case-thumb{display:block;aspect-ratio:16/6;background:#fff;border-bottom:1px solid var(--line-soft);overflow:hidden}
+.case-thumb img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.case-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-4) var(--sp-5);padding:var(--sp-5);align-items:end}
+.case-code{display:block;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-3)}
+.case-title{display:block;font-weight:700;letter-spacing:-.02em;line-height:var(--lh-head);font-size:var(--fs-card);margin-top:var(--sp-2)}
+.case-body .tags{margin-top:var(--sp-3)}
+.case-kpi{text-align:right}
+.case-kpi b{display:block;font-family:var(--mono);font-weight:500;font-size:var(--fs-kpi);letter-spacing:-.04em;line-height:1;color:var(--accent)}
+.case-kpi span{display:block;font-size:var(--fs-xs);color:var(--ink-2);margin-top:var(--sp-2);white-space:nowrap}
+.case-more{grid-column:1/-1;display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-sm);font-weight:600;color:var(--ink-2);padding-top:var(--sp-4);border-top:1px solid var(--line-soft);transition:color var(--dur-fast) var(--ease)}
+.case-card:hover .case-more,.case-card[aria-expanded="true"] .case-more{color:var(--accent)}
+.case-more i{transition:transform .3s var(--ease)}
+.case-card[aria-expanded="true"] .case-more i{transform:rotate(180deg)}
+.case-detail{grid-column:1/-1;border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--metal-line) border-box;border-radius:var(--r-lg);box-shadow:var(--edge-hi),var(--shadow-1);padding:clamp(var(--sp-5),3vw,var(--sp-7))}
+.case-detail[hidden]{display:none}
+@media (prefers-reduced-motion:no-preference){.case-detail{animation:fade .6s var(--ease)}}
+.cd-head{display:flex;justify-content:space-between;gap:var(--sp-4);align-items:flex-start}
+.cd-head h3{font-size:var(--fs-h3)}
+.cd-head p{margin:var(--sp-3) 0 0;color:var(--ink-2);max-width:36em}
+.cd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:var(--sp-6) clamp(var(--sp-5),4vw,var(--sp-8));margin-top:var(--sp-6)}
+.cd-label{font-size:var(--fs-base);font-weight:700;margin:0 0 var(--sp-3)}
+.cd-block + .cd-block{margin-top:var(--sp-6)}
+.roles{display:flex;flex-wrap:wrap;gap:var(--sp-2);list-style:none;margin:0;padding:0}
+.roles li{border:1px solid var(--line-soft);background:var(--bg);border-radius:999px;padding:var(--sp-1) var(--sp-3);font-size:var(--fs-sm);line-height:1.6}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line-soft);border-radius:var(--r-sm)}
+.cmp{width:100%;border-collapse:collapse;font-size:var(--fs-sm);min-width:360px}
+.cmp th,.cmp td{padding:11px 12px;text-align:right;white-space:nowrap}
+.cmp td.chg,.cmp td.flat{white-space:normal;min-width:6.5em}
+.cmp th:first-child,.cmp td:first-child{text-align:left}
+.cmp thead th{font-weight:500;color:var(--ink-3);font-size:var(--fs-xs);background:var(--bg)}
+.cmp tbody tr + tr td{border-top:1px solid var(--line-soft)}
+.cmp td.num,.cmp td.chg,.cmp td.flat{font-variant-numeric:tabular-nums}
+.cmp td.num{font-family:var(--mono)}
+.cmp td.chg{font-family:var(--mono);color:var(--accent)}
+.cmp td.flat{font-family:var(--mono);color:var(--ink-2)}
+.cmp td.todo{color:var(--ink-3)}
+.chart-tabs{display:flex;gap:var(--sp-2);margin-bottom:var(--sp-3);overflow-x:auto;scrollbar-width:none}
+.chart-tabs .tab{height:36px;font-size:var(--fs-sm);padding:0 var(--sp-3)}
+.chart{margin:0;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line-soft);background:#fff;box-shadow:var(--shadow-1);cursor:zoom-in;transition:border-color var(--dur) var(--ease)}
+.chart:hover,.chart:focus-visible{border-color:var(--line-strong)}
+.chart img{width:100%}
+.chart-cap{color:var(--ink-3);font-size:var(--fs-xs);line-height:1.6;margin-top:var(--sp-3);display:flex;justify-content:space-between;gap:var(--sp-3);flex-wrap:wrap}
+.reps{display:grid;gap:var(--sp-3)}
+.rep{border:1px solid var(--line-soft);border-radius:var(--r-sm);padding:var(--sp-4) var(--sp-5);background:var(--bg)}
+.rep h4{margin:0;font-size:var(--fs-ui);line-height:var(--lh-head)}
+.rep p{margin:var(--sp-1) 0 0;color:var(--ink-2);font-size:var(--fs-sm);line-height:var(--lh-snug)}
+.rep dl{display:grid;gap:var(--sp-2);margin:var(--sp-3) 0 0}
+.rp{display:grid;grid-template-columns:4em minmax(0,1fr);gap:8px;align-items:baseline}
+.rp dt{font-size:var(--fs-2xs);color:var(--ink-3)}
+.rp dd{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 8px;font-family:var(--mono);font-size:var(--fs-sm)}
+.rp dd small{color:var(--ink-3);font-size:var(--fs-2xs)}
+.rp dd > small{grid-column:1/-1;font-family:var(--font)}
+.cases > *,.cd-grid > *{min-width:0}
+.periods{display:flex;flex-wrap:wrap;gap:var(--sp-1) var(--sp-5);margin:0 0 var(--sp-3);font-size:var(--fs-xs)}
+.periods div{display:flex;gap:8px}
+.periods dt{color:var(--ink-3)}
+.periods dd{margin:0;font-family:var(--mono);color:var(--ink-2)}
+.seo-note{color:var(--ink-3);font-size:var(--fs-xs);line-height:1.7;margin-top:var(--sp-6);max-width:48em}
+.close-btn{flex:none}
+.sr-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){
+  .cases{grid-template-columns:1fr}
+  .cd-grid{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .case-body{grid-template-columns:1fr}
+  .case-kpi{text-align:left}
+  .rp{grid-template-columns:1fr}
+  .rp dd{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* wordpress plugin */
+.plugin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:var(--sp-7) clamp(var(--sp-6),5vw,var(--sp-8));margin-top:var(--space-head);align-items:start}
+.plugin > *{min-width:0}
+.plugin-meta{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-5);margin:0;font-size:var(--fs-sm)}
+.plugin-meta div{display:flex;gap:var(--sp-2);align-items:baseline}
+.plugin-meta dt{color:var(--ink-3)}
+.plugin-meta dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.feat{display:grid;gap:var(--sp-5);margin-top:var(--sp-6)}
+.feat h3{font-size:var(--fs-base);display:flex;align-items:center;gap:var(--sp-2);padding-bottom:var(--sp-2);border-bottom:1px solid var(--line-soft)}
+.feat h3 i{font-size:18px;color:var(--accent)}
+.feat ul{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:grid;gap:var(--sp-2)}
+.feat li{color:var(--ink-2);font-size:var(--fs-ui);line-height:var(--lh-snug);padding-left:var(--sp-4);position:relative}
+.feat li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--ink-3)}
+.plugin .btn{margin-top:var(--sp-6)}
+.plugin-shot .pc-frame figure{margin:0;cursor:zoom-in}
+.plugin-shot .pc-frame img{width:100%}
+.plugin-shot .hint{margin-top:var(--sp-3)}
+@media (max-width:900px){.plugin{grid-template-columns:1fr}}
+
+/* toolkit + contact */
+#platforms{padding-top:var(--space-section)}
+#toolkit{padding-bottom:var(--space-sub)}
+.toolkit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-6) clamp(var(--sp-5),4vw,var(--sp-8));margin-top:var(--space-head)}
+.toolkit h3{font-size:var(--fs-card);display:flex;align-items:center;gap:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:1px solid var(--line-soft)}
+.toolkit h3 i{color:var(--accent);font-size:22px}
+.toolkit ul{list-style:none;margin:var(--sp-4) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+.toolkit li{background:var(--tag-bg);border:1px solid var(--line-soft);border-radius:999px;padding:var(--sp-1) var(--sp-3);font-size:var(--fs-ui);line-height:1.6}
+@media (max-width:860px){.toolkit{grid-template-columns:1fr}}
+.contact{padding-bottom:var(--sp-7)}
+.contact-box{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--r-xl);border:1px solid transparent;background:linear-gradient(160deg,#1a1b1e,#0b0b0c 70%) padding-box,linear-gradient(180deg,rgb(255 255 255 / .30),rgb(255 255 255 / .05) 40%,rgb(255 255 255 / .14)) border-box;color:#ededef;box-shadow:var(--shadow-2);padding:clamp(var(--sp-7),6vw,6rem) clamp(var(--sp-5),6vw,5rem);display:grid;grid-template-columns:minmax(0,1.3fr) auto;gap:var(--sp-6);align-items:end}
+.contact-box h2{max-width:none}
+.contact-box p{color:#a7a9ae;margin:var(--sp-4) 0 0;max-width:28em;font-size:var(--fs-lede)}
+.contact-box .btn-primary{--metal-fill:linear-gradient(180deg,#fbfbfc 0%,#d6d8dc 44%,#a9adb4 54%,#e4e6e9 100%);--metal-fg:#0b0b0c;--metal-rim:rgb(255 255 255 / .55);--btn-shadow:0 1px 2px rgb(0 0 0 / .5),0 6px 16px -8px rgb(0 0 0 / .7);height:56px;padding:0 var(--sp-6);font-size:var(--fs-card)}
+.contact-box .mail{display:block;margin-top:var(--sp-3);font-family:var(--mono);font-size:var(--fs-ui);color:#9a9ca2;text-align:right}
+.contact-box > *{min-width:0}
+.contact-box::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 90% at 88% 0%,rgb(255 255 255 / .10),transparent 70%)}
+.contact-box .mail{overflow-wrap:anywhere}
+@media (max-width:760px){.contact-box{grid-template-columns:1fr}.contact-box .mail{text-align:left}}
+footer{padding:var(--sp-6) 0 var(--sp-7);color:var(--ink-3);font-size:var(--fs-sm)}
+footer small{font-size:inherit}
+footer .wrap{display:flex;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap}
+/* 回到頂端：捲過首屏後浮出，金屬圓鈕 */
+.to-top{position:fixed;z-index:15;right:max(var(--gutter),env(safe-area-inset-right));bottom:max(var(--sp-5),env(safe-area-inset-bottom));width:48px;height:48px;border-radius:999px;display:grid;place-items:center;font-size:20px;text-decoration:none;color:var(--metal-fg);background:var(--metal-fill);border:1px solid var(--metal-rim);box-shadow:inset 0 1px 0 rgb(255 255 255 / .35),inset 0 -1px 0 rgb(0 0 0 / .18),var(--shadow-3);opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease),visibility 0s linear var(--dur),filter var(--dur-fast) var(--ease)}
+.to-top.show{opacity:1;visibility:visible;transform:none;transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease),visibility 0s,filter var(--dur-fast) var(--ease)}
+.to-top:hover{filter:brightness(1.08)}
+.to-top:active{transform:scale(.95)}
+@media (hover:hover){.to-top.show:hover{transform:translateY(-2px)}}
+@media (max-width:640px){.to-top{width:44px;height:44px;font-size:18px}}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;max-width:100vw;max-height:100dvh;width:100vw;height:100dvh;background:rgb(8 9 12 / .92);color:#eee}
+dialog.lb::backdrop{background:transparent}
+.lb-scroll{position:absolute;inset:0;overflow:auto;display:flex;align-items:flex-start;padding:64px 16px 88px;overscroll-behavior:contain}
+.lb-scroll img{flex:none;cursor:zoom-in;-webkit-user-drag:none;user-select:none}  /* flex:none：放大時不被容器壓縮回原始寬度 */
+.lb-scroll.zoomed img{cursor:grab}
+.lb-scroll.dragging img{cursor:grabbing}
+.lb-scroll img,.lb-scroll video{max-width:min(1200px,100%);height:auto;margin:auto;border-radius:var(--r-sm);box-shadow:0 0 0 1px rgb(255 255 255 / .06),0 30px 80px -30px rgb(0 0 0 / .8)}
+.lb-scroll img.tall{margin:0 auto}
+.lb-scroll img.fit{max-height:calc(100dvh - 160px);width:auto}  /* 預留上方工具列與下方縮放列 */
+.lb-bar{position:fixed;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;z-index:2;pointer-events:none}
+.lb-bar > *{pointer-events:auto}
+.lb-cap{font-size:var(--fs-sm);background:rgb(255 255 255 / .1);padding:6px 14px;border-radius:999px}
+.lb-btns{display:flex;gap:8px}
+.lb-btns button{width:42px;height:42px;border-radius:999px;border:1px solid rgb(255 255 255 / .18);background:rgb(20 22 28 / .8);box-shadow:inset 0 1px 0 rgb(255 255 255 / .08);color:#fff;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:background-color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.lb-btns button:hover{background:rgb(40 43 52 / .9);border-color:rgb(255 255 255 / .32)}
+.lb-btns button:active{transform:scale(.96)}
+.lb-btns button:disabled,.lb-zoom button:disabled{opacity:.35;cursor:default;pointer-events:none}
+.lb-zoom{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgb(20 22 28 / .86);border:1px solid rgb(255 255 255 / .16);box-shadow:inset 0 1px 0 rgb(255 255 255 / .08),0 10px 30px -12px rgb(0 0 0 / .8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lb-zoom[hidden]{display:none}
+.lb-zoom button{height:40px;min-width:40px;padding:0 var(--sp-2);border:0;border-radius:999px;background:transparent;color:#fff;cursor:pointer;font-size:18px;display:grid;place-items:center;transition:background-color var(--dur-fast) var(--ease)}
+.lb-zoom button:hover{background:rgb(255 255 255 / .1)}
+.lb-zoom button:active{transform:scale(.96)}
+.lb-zoom .lb-pct{min-width:64px;font-family:var(--mono);font-size:var(--fs-sm);font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .scroller img{transition:none}
+  .scroller:hover img{transform:none}
+  .to-top,.to-top.show{transition:opacity var(--dur) linear,visibility 0s;transform:none}
+  .btn:hover,.case-card:hover,.site:hover figure img,.poster:hover img,.cell:hover img{transform:none}
+  *{transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="主選單">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Afra Lin | Designer，回到頂端"><span class="brand-logo" aria-hidden="true"></span></a>
+    <ul>
+      <li><a href="#platforms">平台介面</a></li>
+      <li><a href="#websites">手刻網站</a></li>
+      <li><a href="#wordpress">WP 官網</a></li>
+      <li><a href="#visuals">行銷視覺</a></li>
+      <li><a href="#identity">品牌識別</a></li>
+      <li><a href="#seo">SEO 成效</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="切換深淺色"><i class="ph ph-moon"></i></button>
+      <a class="btn btn-primary btn-sm" href="#contact">寄信給我</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow rise" style="--i:0"><i class="ph ph-pen-nib"></i>UI 設計 / 前端切版 / SEO</span>
+        <h1 class="rise" style="--i:1"><span class="nb">網頁設計與 SEO，</span><br><em>從策略到上線</em>。</h1>
+        <p class="rise" style="--i:2">六年做網站、四年做 SEO。我喜歡把想法親手做成上線的網站，再看著數據一點一點長大。</p>
+        <div class="ctas rise" style="--i:3">
+          <a class="btn btn-primary" href="#platforms">看作品<i class="ph ph-arrow-down-right"></i></a>
+          <a class="btn btn-ghost" href="#contact">寄信給我</a>
+        </div>
+      </div>
+      <div class="stage rise" style="--i:2" aria-hidden="true">
+        <div class="browser">
+          <div class="browser-bar"><span></span><span></span><span></span></div>
+          <img src="assets/casino-9top-pc-top.webp" alt="" width="1200" height="675" fetchpriority="high">
+        </div>
+        <div class="phone"><img src="assets/casino-9xiang-h5.webp" alt="" width="390" height="844"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat reveal" style="--i:0"><b>6</b><span>套平台介面，PC 與 H5 雙版</span></div>
+      <div class="stat reveal" style="--i:1"><b>10</b><span>個品牌官網，手刻 6 個、WordPress 4 個</span></div>
+      <div class="stat reveal" style="--i:2"><b>4</b><span>個從零建置的網站，附 SEO 實際成效</span></div>
+    </div>
+  </div>
+
+  <!-- 平台介面 -->
+  <section id="platforms">
+    <div class="wrap">
+      <h2 class="reveal"><span class="nb">每一個按鈕，</span><span class="nb">都想讓玩家少想一秒。</span></h2>
+      <p class="lede reveal">玩家不會停下來讀說明，所以我把大廳、館別入口和活動輪播排得一眼就懂。六個品牌各有自己的個性，用起來卻是同一種順手，電腦和手機都一樣。</p>
+
+      <div class="tabs reveal" role="tablist" aria-label="平台品牌">
+        <button class="tab" role="tab" aria-selected="true" data-k="9top">九特 9TOP</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="9win">九勝 9Win</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="xhe">鑫禾 XHE</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="9xiang">九象 IX9</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="noah">諾亞 NOYA</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="luxs">Luxs 品牌站</button>
+      </div>
+
+      <div id="panels" class="reveal"></div>
+
+      <div class="mc-wrap">
+        <h3 class="mc-title reveal"><span class="nb">看不見的內頁，</span><span class="nb">我一樣用心。</span></h3>
+        <p class="lede reveal">存款、取款、轉點這些頁面不在首頁，卻是會員每天真正在用的地方。這套會員系統後來成了多數平台共用的版本，這裡以九特為例，每一頁都有對應的手機版。</p>
+        <div class="mc reveal" id="mc">
+          <div class="mc-nav" role="tablist" aria-label="會員中心功能頁" aria-orientation="vertical" id="mcNav"></div>
+          <div id="mcPc"></div>
+          <div class="h5-frame"><div class="scroller" tabindex="0" id="mcH5" data-full="assets/mc-h5-wallet.webp" data-cap="九特會員中心 錢包轉點（H5 版）"><img src="assets/mc-h5-wallet.webp" alt="九特會員中心 錢包轉點（H5 版），完整頁面" loading="lazy" width="391" height="2559"></div></div>
+          <div class="mc-meta"><div><h4 id="mcName"></h4><p id="mcDesc"></p></div><span class="hint"><i class="ph ph-cursor-click"></i>滑過畫面看整頁，點擊放大</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 手刻網站 -->
+  <section id="websites">
+    <div class="wrap">
+      <h2 class="reveal"><span class="nb">沒有 AI 的年代，</span><span class="nb">一行一行寫出來。</span></h2>
+      <p class="lede reveal">這幾個網站完成於 AI 工具普及之前，沒有自動生成，也沒有 AI 幫忙寫程式。從恆春的民宿、墾丁的海產店到金融代辦，每一頁都是我自己切版、自己寫互動，這也是我到今天最紮實的基本功。</p>
+
+      <div class="sites">
+        <article class="site w4 reveal">
+          <figure data-full="assets/web-missli.webp" data-cap="木子李丹 恆春民宿"><img src="assets/web-missli.webp" alt="木子李丹民宿官網首頁" loading="lazy" width="1440" height="900"></figure>
+          <div class="site-info"><div><h3>木子李丹 恆春民宿</h3><p>雜誌感排版的訂房官網，房型介紹與 LINE 預約入口。</p><div class="tags"><span>jQuery</span><span>Slick</span><span>WOW.js</span></div></div><a class="open-link" href="../手刻網站/missli/index.html" target="_blank" rel="noopener" aria-label="開啟木子李丹網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+        <article class="site w2 tint-a reveal" style="--i:1">
+          <figure data-full="assets/web-dianyan.webp" data-cap="典宴亮麗生活莊園 Spa 館"><img src="assets/web-dianyan-m.webp" alt="典宴 Spa 館手機版首頁" loading="lazy" width="390" height="844"></figure>
+          <div class="site-info"><div><h3>典宴 Spa 館</h3><p>岩盤浴與芳療服務的柔和品牌站，手機版優先設計。</p><div class="tags"><span>jQuery UI</span><span>Slick</span></div></div><a class="open-link" href="../手刻網站/dianyan/index.html" target="_blank" rel="noopener" aria-label="開啟典宴網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+        <article class="site w2 tint-b reveal">
+          <figure data-full="assets/web-olylife.webp" data-cap="OlyLife 奧林生活"><img src="assets/web-olylife-m.webp" alt="OlyLife 奧林生活手機版首頁" loading="lazy" width="390" height="844"></figure>
+          <div class="site-info"><div><h3>OlyLife 奧林生活</h3><p>健康家電產品站，含產品輪播與部落格頁。</p><div class="tags"><span>Bootstrap</span><span>Owl Carousel</span></div></div><a class="open-link" href="../手刻網站/OLYlife/index.html" target="_blank" rel="noopener" aria-label="開啟 OlyLife 網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+        <article class="site w4 reveal" style="--i:1">
+          <figure data-full="assets/web-aliseafood.webp" data-cap="阿利海產"><img src="assets/web-aliseafood.webp" alt="阿利海產官網首頁" loading="lazy" width="1440" height="900"></figure>
+          <div class="site-info"><div><h3>阿利海產</h3><p>墾丁後壁湖海鮮餐廳，多頁式官網涵蓋菜單、門市與徵才。</p><div class="tags"><span>HTML</span><span>CSS</span><span>jQuery</span></div></div><a class="open-link" href="../手刻網站/aliseafood/index.html" target="_blank" rel="noopener" aria-label="開啟阿利海產網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+        <article class="site reveal">
+          <figure data-full="assets/web-9full.webp" data-cap="九富理財代辦服務"><img src="assets/web-9full.webp" alt="九富理財官網首頁" loading="lazy" width="1440" height="900"></figure>
+          <div class="site-info"><div><h3>九富理財代辦</h3><p>十種貸款服務分頁籤，搭配六篇 SEO 文章頁。</p><div class="tags"><span>Swiper</span><span>jQuery</span><span>SEO 文章</span></div></div><a class="open-link" href="../手刻網站/9full/index.html" target="_blank" rel="noopener" aria-label="開啟九富理財網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+        <article class="site reveal" style="--i:1">
+          <figure data-full="assets/web-singfufa.webp" data-cap="鑫富發債務整合"><img src="assets/web-singfufa.webp" alt="鑫富發官網首頁" loading="lazy" width="1440" height="900"></figure>
+          <div class="site-info"><div><h3>鑫富發債務整合</h3><p>原生 JavaScript 寫的頁籤、FAQ 與捲動淡入互動。</p><div class="tags"><span>Vanilla JS</span><span>RWD</span></div></div><a class="open-link" href="../手刻網站/singfufa/index.html" target="_blank" rel="noopener" aria-label="開啟鑫富發網站"><i class="ph ph-arrow-up-right"></i></a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WordPress 網站 -->
+  <section id="wordpress">
+    <div class="wrap">
+      <h2 class="reveal"><span class="nb">會手刻，</span><span class="nb">也懂 WordPress。</span></h2>
+      <p class="lede reveal">不是每個專案都需要從零寫起。這四個官網以 WordPress 建置，版型一樣由我自己設計，佈景或外掛做不到的地方，就用 HTML、CSS 親手補上。工具換了，我對畫面的要求沒有變。</p>
+      <div class="wp-grid" id="wpGrid"></div>
+      <p class="wp-hint reveal"><i class="ph ph-cursor-click"></i>滑過畫面看整頁，點擊放大</p>
+    </div>
+  </section>
+
+  <!-- 行銷視覺 -->
+  <section id="visuals">
+    <div class="wrap">
+      <h2 class="reveal">每週，都在跟注意力賽跑。</h2>
+      <p class="lede reveal">社群貼文被滑過只要一秒，所以每張圖我都先想清楚最想讓人記住的那一句，再決定畫面怎麼排。新遊戲上線和節慶檔期，也會做成短影音。</p>
+      <div class="posters" id="posters"></div>
+    </div>
+  </section>
+
+  <!-- 品牌識別 -->
+  <section id="identity">
+    <div class="wrap">
+      <h2 class="reveal">替品牌找到第一眼的樣子。</h2>
+      <p class="lede reveal">Logo 是品牌和人見面的第一句話。從字標、App 圖示到一隻水豚吉祥物，我會反覆修到它放大縮小都站得住，再延伸成整套視覺。</p>
+      <div class="idgrid">
+        <div class="cell c-99w reveal" data-full="assets/logo-99-wordmark.webp" data-cap="99 娛樂城 字標"><img src="assets/logo-99-wordmark.webp" alt="99 娛樂城字標" loading="lazy"></div>
+        <div class="cell c-99i reveal" data-full="assets/logo-99-icon.webp" data-cap="99 娛樂城 App 圖示"><img src="assets/logo-99-icon.webp" alt="99 娛樂城 App 圖示" loading="lazy"></div>
+        <div class="cell c-capyapp cover reveal" data-full="assets/capy88-app.webp" data-cap="水豚88 登入頁"><img src="assets/capy88-app.webp" alt="水豚88 App 登入畫面" loading="lazy" style="object-position:top"></div>
+        <div class="cell c-9win reveal" data-full="assets/logo-9win.webp" data-cap="9Win"><img src="assets/logo-9win.webp" alt="9Win Logo" loading="lazy" style="max-width:96%;max-height:96%"></div>
+        <div class="cell c-xhe reveal" data-full="assets/logo-xhe.webp" data-cap="鑫禾 XHE"><img src="assets/logo-xhe.webp" alt="鑫禾 XHE Logo" loading="lazy"></div>
+        <div class="cell c-kh reveal" data-full="assets/logo-khbet.webp" data-cap="KHbet"><img src="assets/logo-khbet.webp" alt="KHbet Logo" loading="lazy" style="max-width:88%;max-height:88%"></div>
+        <div class="cell c-capy reveal" data-full="assets/logo-capy88.webp" data-cap="水豚88 吉祥物 Logo"><img src="assets/logo-capy88.webp" alt="水豚88 吉祥物 Logo" loading="lazy" style="max-height:86%"></div>
+        <div class="cell c-zx reveal" data-full="assets/logo-zx-explore.webp" data-cap="中鑫貸 Logo 配色提案"><img src="assets/logo-zx-explore.webp" alt="中鑫貸 Logo 配色提案" loading="lazy" style="max-height:88%"></div>
+        <div class="cell c-zx1 cover reveal" data-full="assets/zx-banner-1.webp" data-cap="中鑫貸 信貸 Banner"><img src="assets/zx-banner-1.webp" alt="中鑫貸信貸橫幅" loading="lazy"></div>
+        <div class="cell c-zx2 cover reveal" data-full="assets/zx-banner-2.webp" data-cap="中鑫貸 民間轉貸 Banner"><img src="assets/zx-banner-2.webp" alt="中鑫貸民間轉貸橫幅" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO -->
+  <section id="seo">
+    <div class="wrap">
+      <h2 class="reveal"><span class="nb">網站上線，</span><span class="nb">才是我工作的開始。</span></h2>
+      <p class="lede reveal">這四個網站都是我從零設計、建置上線，之後再自己做 SEO。比起一張排名截圖，我更想讓你看到真實的成長曲線：同樣長的兩段時間，前後差了多少。</p>
+
+      <div class="cases" id="cases"></div>
+
+      <p class="seo-note reveal">圖表裁切自 Google Search Console（搜尋類型：網路，國家/地區：台灣），已移除網站資源名稱、網址與品牌字詞；關鍵字與頁面改以類別描述。基於客戶保密，不公開品牌、網域與完整關鍵字清單。曝光數以「萬」顯示者，成長率依 GSC 顯示值計算，為約略值。</p>
+    </div>
+  </section>
+
+  <!-- WordPress 外掛 -->
+  <section id="plugin">
+    <div class="wrap">
+      <h2 class="reveal"><span class="nb">把反覆在做的 SEO，</span><span class="nb">寫成一個外掛。</span></h2>
+      <p class="lede reveal">每次架站，內部連結、轉址、Schema 和圖片 alt 都要重做一遍。我把這些工作整理成 Yaomu SEO，上架到 WordPress 官方外掛目錄，不依賴外部 API，裝上就能用。</p>
+      <div class="plugin">
+        <div class="reveal">
+          <dl class="plugin-meta">
+            <div><dt>版本</dt><dd>2.5.2</dd></div>
+            <div><dt>啟用中網站</dt><dd>40+</dd></div>
+            <div><dt>需求</dt><dd>WP 5.8+ / PHP 7.4+</dd></div>
+          </dl>
+          <div class="feat">
+            <div><h3><i class="ph ph-link-simple"></i>內部連結</h3><ul>
+              <li>自訂關鍵字對應網址，自動在全站插入內部連結</li>
+              <li>每篇文章最多 5 組焦點關鍵字，出現時自動連回該篇</li>
+              <li>依文章類型開關、指定頁面啟用，並限制每頁連結數</li></ul></div>
+            <div><h3><i class="ph ph-wrench"></i>網站維護</h3><ul>
+              <li>301 / 302 轉址，支援多個來源路徑與排程生效</li>
+              <li>文章列表新增可排序的「最後更新」欄位</li>
+              <li>上傳圖片時依檔名自動填入標題、alt 與說明</li></ul></div>
+            <div><h3><i class="ph ph-brackets-curly"></i>結構化資料與 AI 搜尋</h3><ul>
+              <li>輸出 Organization、Article、FAQPage、Breadcrumb、Product 等 Schema</li>
+              <li>在地商家資訊：地址、營業時間、座標與社群連結</li>
+              <li>自動產生並快取 /llms.txt，讓 AI 搜尋讀懂網站內容</li></ul></div>
+          </div>
+          <a class="btn btn-ghost" href="https://wordpress.org/plugins/yaomu-seo/" target="_blank" rel="noopener">到 WordPress.org 看外掛<i class="ph ph-arrow-up-right"></i></a>
+        </div>
+        <div class="plugin-shot reveal" style="--i:1">
+          <div class="pc-frame"><div class="browser-bar"><span></span><span></span><span></span></div>
+            <figure data-full="assets/plugin-yaomu-seo.webp" data-cap="Yaomu SEO 在 WordPress.org 的外掛頁面"><img src="assets/plugin-yaomu-seo.webp" alt="Yaomu SEO 在 WordPress 官方外掛目錄的頁面，顯示版本 2.5.2 與 40+ 啟用安裝" loading="lazy" width="1240" height="710"></figure></div>
+          <span class="hint"><i class="ph ph-cursor-click"></i>點擊放大</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工具 -->
+  <section id="toolkit">
+    <div class="wrap">
+      <h2 class="reveal">陪我把想法做出來的工具。</h2>
+      <div class="toolkit">
+        <div class="reveal"><h3><i class="ph ph-figma-logo"></i>設計</h3><ul><li>Figma</li><li>Photoshop</li><li>Illustrator</li><li>AI 生圖輔助</li><li>短影音剪輯</li></ul></div>
+        <div class="reveal" style="--i:1"><h3><i class="ph ph-code"></i>前端</h3><ul><li>HTML5</li><li>CSS3 / RWD</li><li>JavaScript</li><li>jQuery</li><li>Bootstrap</li><li>Swiper / Slick</li><li>WordPress</li><li>WordPress 外掛開發</li></ul></div>
+        <div class="reveal" style="--i:2"><h3><i class="ph ph-chart-line-up"></i>SEO</h3><ul><li>Google Search Console</li><li>關鍵字研究</li><li>搜尋意圖分析</li><li>主題群內容規劃</li><li>SEO 文章撰寫</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div>
+          <h2>想一起做點什麼嗎？</h2>
+          <p>不論是新網站、改版還是 SEO，或你正在找一位能把設計、技術和數據串在一起的夥伴，都很歡迎來信聊聊。</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="mailto:yaomu2150@gmail.com">寄信給我<i class="ph ph-paper-plane-tilt"></i></a>
+          <span class="mail">yaomu2150@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><small>&copy; 2026 Afra Lin. All rights reserved.</small></div></footer>
+
+<a class="to-top" id="toTop" href="#top" aria-label="回到頂端" title="回到頂端"><i class="ph ph-arrow-up"></i></a>
+
+<dialog class="lb" id="lb" aria-label="作品放大檢視">
+  <div class="lb-bar"><span class="lb-cap" id="lbCap"></span><div class="lb-btns"><button id="lbPrev" aria-label="上一張"><i class="ph ph-caret-left"></i></button><button id="lbNext" aria-label="下一張"><i class="ph ph-caret-right"></i></button><button id="lbClose" aria-label="關閉"><i class="ph ph-x"></i></button></div></div>
+  <div class="lb-scroll" id="lbBody"></div>
+  <div class="lb-zoom" id="lbZoom" role="group" aria-label="圖片縮放"><button id="lbOut" type="button" aria-label="縮小" title="縮小（-）"><i class="ph ph-minus"></i></button><button id="lbFit" class="lb-pct" type="button" aria-label="符合視窗" title="符合視窗（0）"><span id="lbPct" aria-live="polite">100%</span></button><button id="lbIn" type="button" aria-label="放大" title="放大（+）"><i class="ph ph-plus"></i></button></div>
+</dialog>
+
+<script>
+(() => {
+  // 平台資料
+  const platforms = {
+    '9top':  {name:'九特娛樂城 9TOP', desc:'紅黑金配色的遊戲大廳，熱門老虎機與真人館分區清楚，H5 底部導覽一指可達。'},
+    '9win':  {name:'九勝娛樂城 9Win', desc:'深紫電光主視覺，搭配館別 Logo 牆與大量遊戲縮圖的高密度排版。'},
+    'xhe':   {name:'鑫禾娛樂城 XHE', desc:'淺色金藍系統，以吉祥物金蟾帶出品牌親和感，與 Logo 一起設計。'},
+    '9xiang':{name:'九象娛樂城 IX9', desc:'深藍金色的奢華感，H5 版以側邊館別選單加卡片式遊戲入口。'},
+    'noah':  {name:'諾亞娛樂城 NOYA', desc:'少見的淺粉米白系介面，以 App 下載與真人主播為主要轉換入口。'},
+    'luxs':  {name:'Luxs 包網品牌站', desc:'B2B 包網服務的長篇品牌頁，條列方案、流程與技術能力。', pc:'assets/luxs-pc.webp', h5:'assets/luxs-h5.webp'}
+  };
+  const panels = document.getElementById('panels');
+  Object.entries(platforms).forEach(([k,p],i) => {
+    const pc = p.pc || `assets/casino-${k}-pc.webp`, h5 = p.h5 || `assets/casino-${k}-h5.webp`;
+    const el = document.createElement('div');
+    el.className = 'panel' + (i===0?' active':''); el.dataset.k = k; el.setAttribute('role','tabpanel');
+    el.innerHTML = `
+      <div class="showcase">
+        <div class="pc-frame"><div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="scroller" tabindex="0" data-full="${pc}" data-cap="${p.name}（PC 版）"><img src="${pc}" alt="${p.name} PC 版完整頁面" loading="${i?'lazy':'eager'}"></div></div>
+        <div class="h5-frame"><div class="scroller" tabindex="0" data-full="${h5}" data-cap="${p.name}（H5 版）"><img src="${h5}" alt="${p.name} 手機版完整頁面" loading="${i?'lazy':'eager'}"></div></div>
+      </div>
+      <div class="show-meta"><div><h3>${p.name}</h3><p>${p.desc}</p></div>
+        <span class="hint"><i class="ph ph-cursor-click"></i>滑過畫面看整頁，點擊放大</span></div>`;
+    panels.appendChild(el);
+  });
+  // 依圖片長度設定自動捲動時間
+  const setDur = img => { const r = img.naturalHeight / img.naturalWidth; img.style.setProperty('--dur', Math.min(Math.max(r*1.6, 2), 16).toFixed(1)+'s'); };
+  panels.querySelectorAll('.scroller img').forEach(img => img.complete ? setDur(img) : img.addEventListener('load',() => setDur(img)));
+
+  // WordPress 網站
+  const wpSites = [
+    {k:'rt', kind:'交通服務', name:'RT富遊 機場與包車接送', tint:'#dfe3ea',
+     desc:'服務卡片、車型方案與價格分頁，搭配側邊浮動聯絡按鈕，方便訪客直接詢價。', tags:['WordPress','RWD','方案分頁']},
+    {k:'dmace', kind:'空調工程', name:'大茂空調 台南冷氣工程', tint:'#dbe5f5',
+     desc:'首屏直接放諮詢表單，下方是六項服務、合作家電品牌牆與地圖資訊。', tags:['WordPress','RWD','詢價表單']},
+    {k:'hongyu', kind:'製造業', name:'泓宇開發 膠帶模切加工', tint:'#f3e7c7',
+     desc:'深藍配黃的工業風格，用數據亮點、製程圖卡與應用產業說明專業能力。', tags:['WordPress','RWD','B2B 官網']},
+    {k:'nicecurve', kind:'健康產品', name:'NiceCurve 好形頸椎器', tint:'#d9ebee',
+     desc:'長篇產品頁，整合常見問題、影片、認證與門市資訊，首次造訪會跳出優惠彈窗。', tags:['WordPress','RWD','產品長頁','彈窗'], popup:true}
+  ];
+  document.getElementById('wpGrid').innerHTML = wpSites.map((w, i) => {
+    const capPc = `${w.name}（PC 版）`, capH5 = `${w.name}（手機版）`;
+    const pcAttr = w.popup
+      ? ` data-gallery='${JSON.stringify([{full:`assets/wp-${w.k}-pc.webp`,cap:capPc},{full:`assets/wp-${w.k}-popup.webp`,cap:`${w.name} 首次造訪優惠彈窗`}])}' data-index="0"`
+      : ` data-full="assets/wp-${w.k}-pc.webp" data-cap="${capPc}"`;
+    return `<article class="reveal" style="--i:${i%2}">
+      <div class="wp-stage" style="--tint:color-mix(in srgb,${w.tint} 22%,var(--surface-2))">
+        <div class="pc-frame"><div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="scroller" tabindex="0"${pcAttr}><img src="assets/wp-${w.k}-pc.webp" alt="${capPc}，完整頁面" loading="lazy"></div></div>
+        <div class="h5-frame"><div class="scroller" tabindex="0" data-full="assets/wp-${w.k}-h5.webp" data-cap="${capH5}"><img src="assets/wp-${w.k}-h5.webp" alt="${capH5}，完整頁面" loading="lazy"></div></div>
+      </div>
+      <div class="wp-info"><div><span class="kind">${w.kind}</span><h3>${w.name}</h3><p>${w.desc}</p>
+        <div class="tags">${w.tags.map(t => `<span>${t}</span>`).join('')}</div></div></div>
+    </article>`;
+  }).join('');
+  document.querySelectorAll('#wpGrid .scroller img').forEach(img => img.complete ? setDur(img) : img.addEventListener('load', () => setDur(img), {once:true}));
+
+  // 會員中心內頁（九特）
+  const mcGroups = [
+    ['總覽', [['menu','會員選單','H5 的會員入口，把存取款、遊戲紀錄、個人與其他功能分組成圖示選單。']]],
+    ['錢包', [['deposit','存款','VIP 進度卡搭配 ATM、超商、信用卡、USDT 四種存款方式與注意事項。'],
+              ['withdraw','取款','取款方式、金額試算與流水狀態放在同一頁，出款前就能看清條件。'],
+              ['wallet','錢包轉點','依電子、真人、體育、彩票、棋牌分組的遊戲錢包，支援一鍵回收與點數轉移。']]],
+    ['紀錄', [['transactions','交易紀錄','儲值與出款篩選、訂單編號搜尋與時間區間查詢。'],
+              ['bets','下注紀錄','依遊戲品牌與時間篩選，沒有資料時顯示明確的空狀態。'],
+              ['report','遊戲報表','依遊戲類型分組，彙總洗碼、有效洗碼、彩金、輸贏與返水。'],
+              ['points','優惠點數紀錄','快速時間篩選加自訂區間，列出優惠名稱與點數。'],
+              ['status','申請狀態','依出款、優惠、實名、銀行卡等類型查詢審核結果。']]],
+    ['帳戶', [['profile','個人資料','三步驟實名制進度，整合身份、銀行、聯絡資訊、超商與 USDT 綁定。'],
+              ['security','安全設置','修改登入密碼的表單，附上密碼長度與組合規則。'],
+              ['messages','消息中心','系統公告與個人短信分頁，未讀數量即時提示。']]],
+    ['福利', [['vip','VIP 優惠','VIP 等級福利對照表，搭配升降級規則說明。'],
+              ['share','分享賺錢','推廣連結、QR Code 與累積佣金領取流程。']]]
+  ];
+  const mcItems = mcGroups.flatMap(([, items]) => items);
+  const mcNav = document.getElementById('mcNav'), mcPc = document.getElementById('mcPc'), mcH5 = document.getElementById('mcH5');
+  mcNav.innerHTML = mcGroups.map(([g, items]) => `<div class="mc-group"><p>${g}</p><div>${items.map(([k, n]) =>
+    `<button class="mc-item" type="button" role="tab" aria-selected="false" aria-controls="mc" data-k="${k}">${n}</button>`).join('')}</div></div>`).join('');
+  const mcBtns = [...mcNav.querySelectorAll('.mc-item')];
+  const showMc = k => {
+    const [, name, desc] = mcItems.find(x => x[0] === k);
+    mcBtns.forEach(b => { const on = b.dataset.k === k; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    const capPc = `九特會員中心 ${name}（PC 版）`, capH5 = `九特會員中心 ${name}（H5 版）`;
+    if (k === 'menu') {
+      mcPc.innerHTML = `<div class="mc-note"><div><i class="ph ph-sidebar-simple"></i><p>PC 版的會員選單固定在每一頁的左側欄，可切換其他功能頁查看。</p></div></div>`;
+    } else {
+      const gallery = k === 'wallet' ? ` data-gallery='${JSON.stringify([{full:'assets/mc-pc-wallet.webp',cap:capPc},{full:'assets/mc-pc-wallet-modal.webp',cap:'九特會員中心 點數轉移彈窗（PC 版）'}])}' data-index="0"` : ` data-full="assets/mc-pc-${k}.webp" data-cap="${capPc}"`;
+      mcPc.innerHTML = `<div class="pc-frame"><div class="browser-bar"><span></span><span></span><span></span></div>
+        <div class="scroller" tabindex="0"${gallery}><img src="assets/mc-pc-${k}.webp" alt="${capPc}，完整頁面" loading="lazy"></div></div>`;
+    }
+    const h5img = mcH5.querySelector('img');
+    mcH5.dataset.full = `assets/mc-h5-${k}.webp`; mcH5.dataset.cap = capH5;
+    h5img.src = `assets/mc-h5-${k}.webp`; h5img.alt = `${capH5}，完整頁面`;
+    document.getElementById('mcName').innerHTML = name + (k === 'wallet' ? '<span class="mc-extra">含點數轉移彈窗</span>' : '');
+    document.getElementById('mcDesc').textContent = desc;
+    document.querySelectorAll('#mc .scroller img').forEach(img => img.complete ? setDur(img) : img.addEventListener('load', () => setDur(img), {once:true}));
+  };
+  mcBtns.forEach((b, i) => {
+    b.addEventListener('click', () => showMc(b.dataset.k));
+    b.addEventListener('keydown', e => {
+      const d = {ArrowDown:1, ArrowRight:1, ArrowUp:-1, ArrowLeft:-1}[e.key]; if (!d) return;
+      e.preventDefault(); const n = mcBtns[(i + d + mcBtns.length) % mcBtns.length]; n.focus(); showMc(n.dataset.k);
+    });
+  });
+  showMc('wallet');
+
+  const tabs = [...document.querySelectorAll('#platforms .tabs .tab')];
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x===t));
+    panels.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.k===t.dataset.k));
+  }));
+
+  // 行銷圖
+  const posterCaps = ['皇家金象 新遊戲預告','戰神呂布 買免遊說明','幸運幣大亨 極運金','RSG 賞金獵人 上線','2026 馬年紅包活動','RC 真人主播招募','年度熱門遊戲 Top3','QT 電子年度必玩','雷神之鎚 II','赤三國 新遊戲','EEAI 閃電百家樂','BNG 3 月新老虎機'];
+  const posters = document.getElementById('posters');
+  posterCaps.forEach((c,i) => {
+    const n = String(i+1).padStart(2,'0');
+    posters.insertAdjacentHTML('beforeend', `<figure class="poster reveal" style="--i:${i%4}" data-full="assets/poster-${n}.webp" data-cap="${c}"><img src="assets/poster-${n}.webp" alt="${c}" loading="lazy" width="720" height="1280"></figure>`);
+    if (i === 4) posters.insertAdjacentHTML('beforeend', `<figure class="poster feature reveal" data-video="assets/poster-video.mp4" data-cap="馬年新春 短影音"><video src="assets/poster-video.mp4#t=0.1" muted loop playsinline preload="metadata" aria-label="馬年新春短影音"></video></figure>`);
+  });
+  const vid = posters.querySelector('video');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new IntersectionObserver(([e]) => e.isIntersecting ? vid.play().catch(()=>{}) : vid.pause(), {threshold:.3}).observe(vid);
+  }
+
+  // SEO 案例（已匿名化：不含品牌、網域、網址與原始關鍵字）
+  const cases = [
+    {id:'a', code:'專案 A', title:'在地服務 SEO｜餐飲到府服務', focus:['網站設計','決策型關鍵字','服務內容頁'],
+     bg:'從零設計並建置的在地餐飲外燴與到府服務品牌網站。上線初期已有基礎曝光，SEO 重點放在「費用、價格」這類接近下單決策的查詢。',
+     roles:['網站規劃與網頁設計','網站建置與前端調整','網站架構與內部連結規劃','SEO 關鍵字研究與搜尋意圖分析','內容架構與主題群規劃','SEO 文章撰寫及優化','GSC 成效追蹤與分析'],
+     early:'2026/03/01 - 05/31', growth:'2026/06/01 - 08/31', trend:'2026/01/20 - 10/11',
+     kpi:'+119.2%',
+     rows:[['自然點擊','945','2,071','+119.2%'],['搜尋曝光','1.87萬','2.9萬','約 +55%'],['平均點閱率','5.1%','7.1%','+2.0 個百分點'],['平均排名','6.5','7.5','略降 1.0'],['有曝光的查詢數',null,'566',null]],
+     totals:'完整期間：點擊 4,494，曝光 6.88萬，點閱率 6.5%，平均排名 7',
+     reps:[
+      {t:'「服務＋到府費用」類非品牌查詢', d:'同一組查詢在成長期點擊增加，排名維持首頁。', e:['13','558','2.3%','7.2'], g:['77','1,094','7%','6.8']},
+      {t:'主力服務說明文章頁', d:'同一頁面兩期比較，曝光與點閱率同步提升。', e:['29','1,091','2.7%','7.2'], g:['193','3,252','5.9%','6.8']}
+     ]},
+    {id:'b', code:'專案 B', title:'專業設備 SEO｜產品與資訊搜尋', focus:['網站設計','教學型內容','搜尋意圖'],
+     bg:'從零設計並建置的專業設備產品與資訊網站。初期平均排名 20，多數查詢停在搜尋結果第二頁後，以教學型內容回應「如何檢測」類的資訊搜尋。',
+     roles:['網站規劃與網頁設計','網站建置與前端調整','網站架構與內部連結規劃','SEO 關鍵字研究與搜尋意圖分析','內容架構與主題群規劃','SEO 文章撰寫及優化','GSC 成效追蹤與分析'],
+     early:'2026/03/01 - 05/31', growth:'2026/06/01 - 08/31', trend:'2026/01/30 - 10/11',
+     kpi:'+94.6%',
+     rows:[['自然點擊','222','432','+94.6%'],['搜尋曝光','8,084','1.92萬','約 +138%'],['平均點閱率','2.7%','2.2%','-0.5 個百分點'],['平均排名','20','15.9','進步 4.1'],['有曝光的查詢數','118','144','+22.0%']],
+     totals:'完整期間：點擊 959，曝光 4.08萬，點閱率 2.3%，平均排名 15.4',
+     reps:[
+      {t:'「設備自我檢測教學」類查詢', d:'同一組查詢排名從第 8 名附近進到前 5 名。', e:['13','321','4%','8.2'], g:['23','255','9%','4.8']},
+      {t:'教學型長文頁', d:'同一頁面兩期比較，曝光成長約 2.3 倍。', e:['22','673','3.3%','8.4'], g:['34','1,581','2.2%','8.6']}
+     ]},
+    {id:'c', code:'專案 C', title:'在地商家 SEO｜區域搜尋能見度', focus:['網站設計','在地美食內容','區域關鍵字'],
+     bg:'從零設計並建置的在地餐飲商家官網。初期曝光 1.55萬，但點閱率只有 0.7%，以在地美食內容承接區域型搜尋，把曝光轉成點擊。',
+     roles:['網站規劃與網頁設計','網站建置與前端調整','網站架構與內部連結規劃','SEO 關鍵字研究與搜尋意圖分析','SEO 文章撰寫及優化','GSC 成效追蹤與分析'],
+     early:'2026/04/01 - 06/30', growth:'2026/07/01 - 09/30', trend:'2026/01/27 - 10/11',
+     kpi:'+620.9%',
+     rows:[['自然點擊','110','793','+620.9%'],['搜尋曝光','1.55萬','3.87萬','約 +150%'],['平均點閱率','0.7%','2%','+1.3 個百分點'],['平均排名','9.4','8.2','進步 1.2'],['有曝光的查詢數','506','757','+49.6%']],
+     totals:'完整期間：點擊 1,024，曝光 6.84萬，點閱率 1.5%，平均排名 8.6',
+     reps:[
+      {t:'「在地街區＋美食」類非品牌查詢', d:'同一組查詢點閱率從 0.2% 提升到 3.5%，排名進入前 5。', e:['5','2,486','0.2%','6.3'], g:['221','6,278','3.5%','4.7']},
+      {t:'在地美食整理文章', d:'成長期點擊最多的內容頁，排名進入前 5。', e:null, g:['330','8,423','3.9%','4.9']}
+     ]},
+    {id:'d', code:'專案 D', title:'內容媒體 SEO｜新站從零成長', focus:['網站設計','主題群規劃','新站累積'],
+     bg:'從零設計並建置的主題內容網站，2026/05/18 開始內容佈局，起點沒有既有流量。以產品推薦與選購主題群建立文章，累積非品牌搜尋。',
+     roles:['網站規劃與網頁設計','網站建置與前端調整','網站架構與內部連結規劃','SEO 關鍵字研究與搜尋意圖分析','內容架構與主題群規劃','SEO 文章撰寫及優化','GSC 成效追蹤與分析'],
+     early:'2026/06/01 - 07/31', growth:'2026/08/01 - 09/30', trend:'2026/05/18 - 10/11',
+     kpi:'+128.1%',
+     rows:[['自然點擊','167','381','+128.1%'],['搜尋曝光','3,460','6,260','+80.9%'],['平均點閱率','4.8%','6.1%','+1.3 個百分點'],['平均排名','10.1','10.5','略降 0.4'],['有曝光的查詢數','161','295','+83.2%']],
+     totals:'完整期間：點擊 587，曝光 1.11萬，點閱率 5.3%，平均排名 10.5',
+     reps:[
+      {t:'有曝光的內容頁數', d:'取得搜尋曝光的頁面，從初期到成長期持續增加。', e:['40 頁','','',''], g:['59 頁','','',''], pages:true},
+      {t:'主力推薦文章頁', d:'曝光增加、排名持平；點擊從 23 降到 16，仍是站內曝光最高的頁面。', e:['23','259','8.9%','8.2'], g:['16','380','4.2%','8.1']}
+     ]}
+  ];
+  const casesEl = document.getElementById('cases');
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  casesEl.innerHTML = cases.map((c,i) => `
+    <button class="case-card reveal" style="--i:${i%2}" type="button" aria-expanded="false" aria-controls="caseDetail" data-case="${c.id}">
+      <span class="case-thumb"><img src="assets/seo-case-${c.id}-trend.webp" alt="" loading="lazy" width="1505" height="455"></span>
+      <span class="case-body">
+        <span><span class="case-code">${c.code}</span><span class="case-title">${c.title}</span><span class="tags">${c.focus.map(f=>`<span>${f}</span>`).join('')}</span></span>
+        <span class="case-kpi"><b>${c.kpi}</b><span>自然點擊，初期到成長期</span></span>
+        <span class="case-more">看案例細節<i class="ph ph-caret-down"></i></span>
+      </span>
+    </button>`).join('') + '<div class="case-detail" id="caseDetail" role="region" aria-label="SEO 案例細節" hidden></div>';
+  const detail = document.getElementById('caseDetail');
+  const charts = c => [
+    {k:'trend',  label:'完整趨勢', period:c.trend},
+    {k:'early',  label:'初期',     period:c.early},
+    {k:'growth', label:'成長期',   period:c.growth}
+  ].map(x => ({...x, full:`assets/seo-case-${c.id}-${x.k}.webp`, cap:`${c.code} ${x.label}（${x.period}）GSC 成效，已匿名化`}));
+  const repHTML = r => {
+    const row = (label, v) => `<div class="rp"><dt>${label}</dt><dd>${!v ? '<small>未列入初期前 10 名頁面</small>'
+      : r.pages ? `<span>${v[0]}</span>`
+      : `<span>${v[0]} <small>點擊</small></span><span>${v[1]} <small>曝光</small></span><span>${v[2]} <small>CTR</small></span><span>#${v[3]} <small>排名</small></span>`}</dd></div>`;
+    return `<div class="rep"><h4>${r.t}</h4><p>${r.d}</p><dl>${row('初期', r.e)}${row('成長期', r.g)}</dl></div>`;
+  };
+  const renderDetail = c => {
+    const ch = charts(c);
+    detail.innerHTML = `
+      <div class="cd-head"><div><span class="case-code">${c.code}</span><h3>${c.title}</h3><p>${c.bg}</p></div>
+        <button class="icon-btn close-btn" type="button" aria-label="收合案例細節"><i class="ph ph-x"></i></button></div>
+      <div class="cd-grid">
+        <div>
+          <div class="cd-block"><p class="cd-label">我的負責項目</p><ul class="roles">${c.roles.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+          <div class="cd-block"><p class="cd-label">SEO 成效比較</p><dl class="periods"><div><dt>初期</dt><dd>${c.early}</dd></div><div><dt>成長期</dt><dd>${c.growth}</dd></div><div><dt>完整趨勢</dt><dd>${c.trend}</dd></div></dl><div class="tbl-wrap"><table class="cmp">
+            <caption class="sr-cap">前後期成效比較</caption>
+            <thead><tr><th scope="col">指標</th><th scope="col">初期</th><th scope="col">成長期</th><th scope="col">變化</th></tr></thead>
+            <tbody>${c.rows.map(([k,a,b,d]) => `<tr><td>${k}</td>${[a,b].map(v => v==null ? '<td class="todo">待補充</td>' : `<td class="num">${v}</td>`).join('')}${d==null ? '<td class="todo">待補充</td>' : `<td class="${/^\+|進步/.test(d)?'chg':'flat'}">${d}</td>`}</tr>`).join('')}</tbody>
+          </table></div><p class="chart-cap">${c.totals}</p></div>
+        </div>
+        <div>
+          <div class="cd-block">
+            <div class="chart-tabs" role="tablist" aria-label="${c.code} 成效圖表">${ch.map((x,i)=>`<button class="tab" role="tab" type="button" aria-selected="${i===0}" data-i="${i}">${x.label}</button>`).join('')}</div>
+            <figure class="chart" tabindex="0" role="button" aria-label="放大檢視圖表" data-gallery='${esc(JSON.stringify(ch.map(x=>({full:x.full,cap:x.cap}))))}' data-index="0">
+              <img src="${ch[0].full}" alt="${ch[0].cap}" loading="lazy" width="1505" height="455">
+            </figure>
+            <p class="chart-cap"><span class="chart-period">${ch[0].label}：${ch[0].period}</span><span>點擊圖表可放大</span></p>
+          </div>
+          <div class="cd-block"><p class="cd-label">代表性成果</p><div class="reps">${c.reps.map(repHTML).join('')}</div></div>
+        </div>
+      </div>`;
+    const fig = detail.querySelector('.chart'), img = fig.querySelector('img'), per = detail.querySelector('.chart-period');
+    detail.querySelectorAll('.chart-tabs .tab').forEach(t => t.addEventListener('click', () => {
+      const x = ch[+t.dataset.i];
+      detail.querySelectorAll('.chart-tabs .tab').forEach(b => b.setAttribute('aria-selected', b===t));
+      img.src = x.full; img.alt = x.cap; fig.dataset.index = t.dataset.i; per.textContent = `${x.label}：${x.period}`;
+    }));
+    detail.querySelector('.close-btn').addEventListener('click', () => toggleCase(null));
+  };
+  const cards = [...casesEl.querySelectorAll('.case-card')];
+  let openId = null;
+  const toggleCase = id => {
+    const prev = openId; openId = (id === openId) ? null : id;
+    cards.forEach(b => b.setAttribute('aria-expanded', b.dataset.case === openId));
+    if (!openId) { detail.hidden = true; const pc = cards.find(b => b.dataset.case === prev); if (pc && id === null) pc.focus(); return; }
+    const i = cards.findIndex(b => b.dataset.case === openId);
+    const cols = getComputedStyle(casesEl).gridTemplateColumns.split(' ').length;
+    const after = cards[Math.min(cards.length - 1, Math.floor(i / cols) * cols + cols - 1)];
+    after.after(detail);
+    renderDetail(cases.find(c => c.id === openId)); detail.hidden = false;
+    detail.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'nearest'});
+  };
+  cards.forEach(b => b.addEventListener('click', () => toggleCase(b.dataset.case)));
+
+  // 捲動進場
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 燈箱
+  const lb = document.getElementById('lb'), body = document.getElementById('lbBody'), cap = document.getElementById('lbCap');
+  const prevBtn = document.getElementById('lbPrev'), nextBtn = document.getElementById('lbNext');
+  let group = [], idx = 0, opener = null;
+  const itemOf = el => ({full: el.dataset.full, video: el.dataset.video, cap: el.dataset.cap});
+  // 縮放：以「符合視窗」的寬度為 1×，可縮小看整張長截圖，也可放大看細節
+  const zoomBar = document.getElementById('lbZoom'), zIn = document.getElementById('lbIn'), zOut = document.getElementById('lbOut'), zFit = document.getElementById('lbFit'), pct = document.getElementById('lbPct');
+  const LEVELS = [.25,.33,.5,.67,.75,1,1.25,1.5,2,3,4];
+  let zoom = 1, baseW = 0, cur = null;
+  const minZoom = () => cur ? Math.max(LEVELS[0], Math.min(1, 160 / baseW)) : 1;
+  const maxZoom = () => cur ? Math.max(1, Math.min(LEVELS.at(-1), cur.naturalWidth * 3 / baseW)) : 1;
+  const updateZoomUI = () => {
+    if (!cur) return;
+    pct.textContent = Math.round(zoom * 100) + '%';  // 以符合視窗為 100%
+    zOut.disabled = zoom <= minZoom() + 1e-3; zIn.disabled = zoom >= maxZoom() - 1e-3; zFit.disabled = zoom === 1;
+    body.classList.toggle('zoomed', zoom > 1);
+  };
+  // fx, fy：縮放時保持不動的點（相對於捲動區可視範圍），預設為中心
+  const setZoom = (z, fx, fy) => {
+    if (!cur || !baseW) return;
+    z = Math.min(maxZoom(), Math.max(minZoom(), z));
+    if (fx == null) { fx = body.clientWidth / 2; fy = body.clientHeight / 2; }
+    const r = cur.getBoundingClientRect(), br = body.getBoundingClientRect();
+    const px = (br.left + fx - r.left) / r.width, py = (br.top + fy - r.top) / r.height;
+    zoom = z;
+    if (z === 1) { cur.style.width = cur.style.maxWidth = cur.style.maxHeight = ''; }
+    else { cur.style.maxWidth = 'none'; cur.style.maxHeight = 'none'; cur.style.width = Math.round(baseW * z) + 'px'; }
+    const n = cur.getBoundingClientRect();
+    body.scrollLeft += (n.left + n.width * px) - (br.left + fx);
+    body.scrollTop  += (n.top + n.height * py) - (br.top + fy);
+    updateZoomUI();
+  };
+  const stepZoom = (dir, fx, fy) => {
+    const next = dir > 0 ? LEVELS.find(l => l > zoom + 1e-3) : [...LEVELS].reverse().find(l => l < zoom - 1e-3);
+    setZoom(next ?? (dir > 0 ? maxZoom() : minZoom()), fx, fy);
+  };
+  const show = () => {
+    const it = group[idx]; body.innerHTML = ''; body.scrollTop = body.scrollLeft = 0; cap.textContent = it.cap || '';
+    zoom = 1; baseW = 0; cur = null; body.classList.remove('zoomed');
+    if (it.video) {
+      zoomBar.hidden = true;
+      const v = document.createElement('video'); v.src = it.video; v.controls = true; v.autoplay = true; v.loop = true; v.playsInline = true; v.className = 'fit'; v.style.maxHeight = 'calc(100dvh - 150px)';
+      body.appendChild(v);
+    } else {
+      zoomBar.hidden = false; pct.textContent = '…'; zIn.disabled = zOut.disabled = zFit.disabled = true;
+      const img = new Image(); img.src = it.full; img.alt = it.cap || ''; img.draggable = false;
+      img.onload = () => {
+        img.classList.add(img.naturalHeight / img.naturalWidth > 1.9 ? 'tall' : 'fit');
+        cur = img; baseW = img.getBoundingClientRect().width; updateZoomUI();
+      };
+      body.appendChild(img);
+    }
+  };
+  zIn.onclick = () => stepZoom(1);
+  zOut.onclick = () => stepZoom(-1);
+  zFit.onclick = () => { setZoom(1); body.scrollTop = body.scrollLeft = 0; };
+  // 觸控板雙指縮放與 Ctrl/⌘ + 滾輪：以游標位置為中心
+  body.addEventListener('wheel', e => {
+    if (!cur || !(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault();
+    const br = body.getBoundingClientRect();
+    setZoom(zoom * Math.exp(-e.deltaY * 0.01), e.clientX - br.left, e.clientY - br.top);
+  }, {passive:false});
+  // 雙擊：在 1× 與 2× 之間切換
+  body.addEventListener('dblclick', e => {
+    if (!cur || e.target !== cur) return;
+    const br = body.getBoundingClientRect();
+    setZoom(zoom > 1 ? 1 : 2, e.clientX - br.left, e.clientY - br.top);
+  });
+  // 放大後用滑鼠拖曳平移（觸控裝置使用原生捲動）
+  let drag = null, moved = false;
+  body.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0 || e.target !== cur || zoom <= 1) return;
+    drag = {x: e.clientX, y: e.clientY, l: body.scrollLeft, t: body.scrollTop}; moved = false;
+    body.setPointerCapture(e.pointerId); body.classList.add('dragging');
+  });
+  body.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+    body.scrollLeft = drag.l - dx; body.scrollTop = drag.t - dy;
+  });
+  const endDrag = () => { drag = null; body.classList.remove('dragging'); };
+  body.addEventListener('pointerup', endDrag); body.addEventListener('pointercancel', endDrag);
+  // 視窗尺寸改變時重算「符合視窗」基準
+  window.addEventListener('resize', () => {
+    if (!lb.open || !cur) return;
+    const z = zoom; cur.style.width = cur.style.maxWidth = cur.style.maxHeight = ''; zoom = 1;
+    baseW = cur.getBoundingClientRect().width; if (z !== 1) setZoom(z); else updateZoomUI();
+  });
+  const open = el => {
+    opener = el;
+    if (el.dataset.gallery) { group = JSON.parse(el.dataset.gallery); idx = +el.dataset.index || 0; }
+    else {
+      const scope = el.closest('#mc, .panel, section') || document;
+      const els = [...scope.querySelectorAll('[data-full],[data-video]')].filter(x => x.offsetParent !== null || x === el);
+      group = els.map(itemOf); idx = Math.max(0, els.indexOf(el));
+    }
+    prevBtn.hidden = nextBtn.hidden = group.length < 2;
+    show(); lb.showModal(); document.getElementById('lbClose').focus();
+  };
+  const step = d => { idx = (idx + d + group.length) % group.length; show(); };
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-full],[data-video],[data-gallery]');
+    if (t && !e.target.closest('dialog')) open(t);
+  });
+  document.addEventListener('keydown', e => {
+    if (lb.open) {
+      if (e.key==='ArrowRight') step(1); if (e.key==='ArrowLeft') step(-1);
+      if (e.key==='+' || e.key==='=') { e.preventDefault(); stepZoom(1); }
+      if (e.key==='-' || e.key==='_') { e.preventDefault(); stepZoom(-1); }
+      if (e.key==='0') { e.preventDefault(); zFit.click(); }
+      return;
+    }
+    const a = document.activeElement;
+    if ((e.key==='Enter' || e.key===' ') && a && a.matches('.scroller, .chart')) { e.preventDefault(); open(a); }
+  });
+  prevBtn.onclick = () => step(-1);
+  nextBtn.onclick = () => step(1);
+  document.getElementById('lbClose').onclick = () => lb.close();
+  body.addEventListener('click', e => { if (e.target === body && !moved) lb.close(); moved = false; });
+  lb.addEventListener('close', () => { if (lb.open) return; body.innerHTML = ''; cur = null; if (opener && document.contains(opener)) opener.focus(); });  // close 事件為非同步，避免清掉剛開啟的下一張
+
+  // 回到頂端：首屏離開畫面後才出現（不監聽 scroll 事件）
+  const toTop = document.getElementById('toTop');
+  new IntersectionObserver(([e]) => toTop.classList.toggle('show', !e.isIntersecting), {rootMargin:'-120px 0px 0px 0px'}).observe(document.querySelector('.hero'));
+  toTop.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    document.querySelector('.brand').focus({preventScroll:true});
+  });
+
+  // 深淺色切換
+  const root = document.documentElement, btn = document.getElementById('themeBtn');
+  let saved = null; try { saved = localStorage.getItem('theme'); } catch(e) {}
+  if (saved) root.dataset.theme = saved;
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const icon = () => btn.innerHTML = `<i class="ph ${isDark() ? 'ph-sun' : 'ph-moon'}"></i>`;
+  icon();
+  btn.addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; try { localStorage.setItem('theme', root.dataset.theme); } catch(e) {} icon(); });
+})();
+</script>
+</body>
+</html>
